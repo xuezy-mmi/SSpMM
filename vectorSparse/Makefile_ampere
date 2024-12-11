@@ -1,0 +1,75 @@
+NVCC = /usr/local/cuda/bin/nvcc
+SPUTNIK_PATH = /home/xuezeyu/Sparse_Work/sputnik
+NVCC_FLAGS = -std=c++11 -arch=sm_80 -lineinfo -lcublas -lcusparse -I${SPUTNIK_PATH} --ptxas-options=-v
+
+##################################################################
+
+## Project file structure ##
+
+# Source file directory:
+SRC_DIR = src
+
+# Object file directory:
+OBJ_DIR = bin
+
+# Include header file directory
+INC_DIR = include
+
+# Library directory
+LIB_DIR = /usr/local/cuda/lib64
+SPUTNIK_DIR = ${SPUTNIK_PATH}/build/sputnik
+
+#output directory
+OUT_DIR = out
+#csv output directory
+RECORD_DIR = data
+##################################################################
+
+## Compile ##
+
+# Compile main file to object file
+$(OBJ_DIR)/%.o : ./%.cpp
+	@$(NVCC) $(NVCC_FLAGS) -x c++ -c $< -o $@
+
+# Compile CUDA source files to object files
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.cu $(INC_DIR)/%.cuh
+	@$(NVCC) $(NVCC_FLAGS) -x cu -c $< -o $@
+
+spmm_test: $(OBJ_DIR)/spmm_test.o $(OBJ_DIR)/cuda_spmm.o $(OBJ_DIR)/wmma_spmm.o $(OBJ_DIR)/cublas_gemm.o
+	@$(NVCC) $(NVCC_FLAGS) $(SPUTNIK_DIR)/libsputnik.so $^  -o $(OUT_DIR)/$@
+
+
+# spmm_test: ./spmm_test.cpp $(SRC_DIR)/cuda_spmm.cu $(SRC_DIR)/wmma_spmm.cu $(SRC_DIR)/cublas_gemm.cu
+# 	@$(NVCC) $(NVCC_FLAGS) $(SPUTNIK_DIR)/libsputnik.so $^  -o $(OUT_DIR)/$@
+
+#run the spmm_test executable file
+# ./spmm_test             [paths]   [N_dim] [veclength][kernel][sorted][func][sparse][mixed][record][arch]
+spmm_test_run_cublas:
+	$(OUT_DIR)/spmm_test ./paths.txt 512         1         0       0      0      0      2      1      ampere
+spmm_test_run_cusparse:
+	$(OUT_DIR)/spmm_test ./paths.txt 512         1         3       0      0      1      1      1      ampere
+spmm_test_run_sputnik_fp16:
+	$(OUT_DIR)/spmm_test ./paths.txt 512         1         2       1      0      1      1      1      ampere
+# spmm_test_run_sputnik_fp32:
+#	$(OUT_DIR)/spmm_test ./paths.txt 512         1         2       1      0      1      0      0      ampere
+spmm_test_run_vectorsparse:
+	$(OUT_DIR)/spmm_test ./paths.txt 512         8         0       0      0      1      1      1      ampere
+
+# make -f Makefile_ampere spmm_test_run_cusparse_suit
+spmm_test_run_cusparse_suit:
+	$(OUT_DIR)/spmm_test ./suitpaths.txt 512         1         3       0      0      1      0      0      ampere
+# make -f Makefile_ampere spmm_test_run_sputnik_suit
+spmm_test_run_sputnik_suit:
+	$(OUT_DIR)/spmm_test ./suitpaths.txt 512         1         2       0      0      1      0      0      ampere
+
+clean:
+	@rm -f $(OBJ_DIR)/*
+	@rm -f $(OUT_DIR)/*
+	@rm -f $(RECORD_DIR)/*
+
+obj_clean:
+	@rm -f $(OBJ_DIR)/*
+out_clean:
+	@rm -f $(OUT_DIR)/*
+record_clean:
+	@rm -f $(RECORD_DIR)/*

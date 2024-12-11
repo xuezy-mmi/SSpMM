@@ -1,0 +1,16 @@
+suitesparse/circuit204_csr.mtx
+suitesparse/cnae9_10NN_csr.mtx
+suitesparse/collins_15NN_csr.mtx
+suitesparse/cop20k_A_csr.mtx
+suitesparse/filter3D_csr.mtx
+suitesparse/mosfet2_csr.mtx
+suitesparse/web-Google_csr.mtx
+suitesparse/wiki-Vote_csr.mtx
+suitesparse/m133-b3_csr.mtx
+suitesparse/poisson3Da_csr.mtx
+suitesparse/mario002_csr.mtx
+suitesparse/2cubes_sphere_csr.mtx
+suitesparse/scircuit_csr.mtx
+suitesparse/ca-CondMat_csr.mtx
+suitesparse/p2p-Gnutella31_csr.mtx
+suitesparse/psmigr_1_csr.mtx

@@ -1,0 +1,1 @@
+python launch_rospmm.py > rospmm_n2n.txt

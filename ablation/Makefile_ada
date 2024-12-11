@@ -1,0 +1,83 @@
+NVCC = /usr/local/cuda/bin/nvcc
+# SPUTNIK_PATH = /home/xuezeyu/sputnik
+NVCC_FLAGS = -std=c++11 -arch=sm_89 -lineinfo -lcublas -lcusparse  --ptxas-options=-v
+
+##################################################################
+
+## Project file structure ##
+
+# Source file directory:
+SRC_DIR = src
+
+# Object file directory:
+OBJ_DIR = bin
+
+# Include header file directory
+INC_DIR = include
+
+# Library directory
+LIB_DIR = /usr/local/cuda/lib64
+# SPUTNIK_DIR = ${SPUTNIK_PATH}/build/sputnik
+
+#output directory
+OUT_DIR = out
+#csv output directory
+RECORD_DIR = data
+##################################################################
+
+## Compile ##
+
+# Compile main file to object file
+$(OBJ_DIR)/%.o : ./%.cpp
+	@$(NVCC) $(NVCC_FLAGS) -x c++ -c $< -o $@
+
+# Compile CUDA source files to object files
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.cu $(INC_DIR)/%.cuh
+	@$(NVCC) $(NVCC_FLAGS) -x cu -c $< -o $@
+
+
+sspmm_test: $(OBJ_DIR)/sspmm_test.o $(OBJ_DIR)/sspmm.o
+	@$(NVCC) $(NVCC_FLAGS) $^  -o $(OUT_DIR)/$@
+
+# sspmm_test: ./sspmm_test.cpp $(SRC_DIR)/sspmm.cu
+# 	@$(NVCC) $(NVCC_FLAGS) $^  -o $(OUT_DIR)/$@
+
+
+sspmm_test_run800:
+#####################################    [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./paths.txt 512  8   0        0        0       1      0         0    ada
+sspmm_test_run1600:
+#####################################    [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./paths.txt 512 16   0        0        0       1      0         0    ada
+sspmm_test_run810:
+#####################################    [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./paths.txt 512  8   1        0        0       1      0         0    ada
+sspmm_test_run1610:
+#####################################    [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./paths.txt 512 16   1        0        0       1      0         0    ada
+sspmm_test_runsuit8:
+#####################################       [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./suitpaths.txt 512  8   1        0        0       1      0         0    ada
+sspmm_test_runsuit16:
+#####################################       [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./suitpaths.txt 512 16   1        0        0       1      0         0    ada
+sspmm_test_run820:
+#####################################     [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./paths.txt 64  8   2        0        0       1      0         0    ada
+sspmm_test_run1620:
+#####################################     [N] [v] [kernel][sort] [verify] [mixed][record][reorder][arch]
+	$(OUT_DIR)/sspmm_test ./paths.txt 512 16   2        0        0       1      0         0    ada
+
+clean:
+	@rm -f $(OBJ_DIR)/*
+	@rm -f $(OUT_DIR)/*
+	@rm -f $(RECORD_DIR)/*
+
+obj_clean:
+	@rm -f $(OBJ_DIR)/*
+out_clean:
+	@rm -f $(OUT_DIR)/*
+record_clean:
+	@rm -f $(RECORD_DIR)/*
+
+.PHONY: clean sspmm_test sspmm_test_run810 sspmm_test_run1610

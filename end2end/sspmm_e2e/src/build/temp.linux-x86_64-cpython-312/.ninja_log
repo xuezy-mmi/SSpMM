@@ -1,0 +1,9 @@
+# ninja log v5
+0	15927	1710738405007973508	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/sddmm.o	7734dfca66d9720b
+1	53597	1710738442674945400	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/sddmm_kernel.o	884338ec777ce78c
+0	15555	1710738458648933479	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/spmm.o	8e68be4a609f55dc
+24	16070	1710748710559283258	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/spmm.o	7df356250925921b
+17	15403	1710748835862189754	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/spmm.o	8e68be4a609f55dc
+18	52213	1710748872648162303	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/spmm_kernel.o	c8042d4bd4395b28
+0	16257	1710748889361149831	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/softmax.o	581f0ca06b119895
+0	55940	1710748929003120250	/home/xuezeyu/TAUS/end2end/taus_e2e/src/build/temp.linux-x86_64-cpython-312/cuda/softmax_kernel.o	810fc415f86b53e1

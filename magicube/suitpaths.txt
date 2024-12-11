@@ -1,0 +1,16 @@
+suitesparse/circuit204.smtx
+suitesparse/cnae9_10NN.smtx
+suitesparse/collins_15NN.smtx
+suitesparse/cop20k_A.smtx
+suitesparse/filter3D.smtx
+suitesparse/mosfet2.smtx
+suitesparse/web-Google.smtx
+suitesparse/wiki-Vote.smtx
+suitesparse/m133-b3.smtx
+suitesparse/poisson3Da.smtx
+suitesparse/mario002.smtx
+suitesparse/2cubes_sphere.smtx
+suitesparse/scircuit.smtx
+suitesparse/ca-CondMat.smtx
+suitesparse/p2p-Gnutella31.smtx
+suitesparse/psmigr_1.smtx

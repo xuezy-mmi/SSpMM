@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: sptrans
+Version: 0.0.1
+Summary: Custom library for Sparse Transformer for pytorch
+Author: Zhaodong Chen
+Author-email: chenzd15thu@ucsb.edu
+Requires-Dist: torch

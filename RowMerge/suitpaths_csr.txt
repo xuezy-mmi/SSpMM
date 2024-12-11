@@ -1,0 +1,15 @@
+suitesparse/circuit204_csr.mtx
+suitesparse/psmigr_1_csr.mtx
+suitesparse/poisson3Da_csr.mtx
+suitesparse/mosfet2_csr.mtx
+suitesparse/mip1_csr.mtx
+suitesparse/2cubes_sphere_csr.mtx
+suitesparse/filter3D_csr.mtx
+suitesparse/cop20k_A_csr.mtx
+suitesparse/scircuit_csr.mtx
+suitesparse/m133-b3_csr.mtx
+suitesparse/mario002_csr.mtx
+suitesparse/ASIC_680k_csr.mtx
+suitesparse/eu-2005_csr.mtx
+suitesparse/web-Google_csr.mtx
+suitesparse/in-2004_csr.mtx
