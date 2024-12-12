@@ -38,7 +38,7 @@ cp ./csv_data/* ../data/
 cd ..
 ```
 wait about 6hours
-IF you don't want to wait, you can download the data(dlmc-v8, dlmc-v16, dataset-v8, dataset-v16) from https://github.com/xxxxxx/dlmc.git.(TBD)
+IF you don't want to wait, you can download the data(dlmc-v8, dlmc-v16, dataset-v8, dataset-v16) from [https://github.com/xuezy-mmi/dlmc.git](https://github.com/xuezy-mmi/dlmc.git)(TBD)
 ## SSpMM
 ```shell
 cd SSpMM
