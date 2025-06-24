@@ -55,6 +55,7 @@ After programming executing, some csv files will be generated in ./data/. And th
 ## Baseline
 ```shell
 cd vectorsparse
+cd magicube
 ```
 You need to edit "MakeFile_xxx", change the NVCC direction (line 1) and your Sputnik direction (line 2).
 ### Build and Run
