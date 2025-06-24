@@ -1,0 +1,5 @@
+/home/xuezeyu/SSpMM/tSparse/build/CMakeFiles/edit_cache.dir
+/home/xuezeyu/SSpMM/tSparse/build/CMakeFiles/rebuild_cache.dir
+/home/xuezeyu/SSpMM/tSparse/build/src/CMakeFiles/spmm.dir
+/home/xuezeyu/SSpMM/tSparse/build/src/CMakeFiles/edit_cache.dir
+/home/xuezeyu/SSpMM/tSparse/build/src/CMakeFiles/rebuild_cache.dir
